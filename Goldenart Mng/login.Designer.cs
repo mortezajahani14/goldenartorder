@@ -40,7 +40,7 @@
             // 
             // user_txt
             // 
-            this.user_txt.Location = new System.Drawing.Point(146, 90);
+            this.user_txt.Location = new System.Drawing.Point(146, 89);
             this.user_txt.Name = "user_txt";
             this.user_txt.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.user_txt.Size = new System.Drawing.Size(113, 20);
