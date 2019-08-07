@@ -24,15 +24,15 @@ namespace Goldenart_Mng
     }
 
         Image img,img2,img3,img4;
-        byte[] imgh, imgh2, imgh3, imgh4;
+        string imgadd, imgadd2, imgadd3, imgadd4;
 
 
 
         #region Var
         bool clas = true;
         double rate, ratesimp;
-        int pardakht = 0,amount=0,cost=0,sympcost =0,smscost =0,id=0;
-        string  namela, lnamela, mobla, amountla, accla, nightla,errorla, smsla, simpla, datela, clientidla,vip,night,pardakhtsh , desssh,halghesh,tozihhalghesh,filedl,datesh,halghe;
+        int pardakht = 0, amount = 0, cost = 0, sympcost = 0, smscost = 0, id = 0;
+        string  namela, lnamela, mobla, amountla, accla, nightla,errorla, smsla, names1 = "", names2 = "", names3 = "", names4 = "", namepic1 = "", namepic2 = "", namepic3 = "", namepic4 = "", simpla, datela, clientidla,vip,night,pardakhtsh , desssh,halghesh,tozihhalghesh,filedl,datesh,halghe;
         string strconn = "Server=144.76.189.82;Port=3306;Database=cp29196_Golddesign;UID=cp29196_ugolddesign;PASSWORD=sd0018658962;Convert Zero Datetime=true;Allow Zero Datetime=True;SslMode=None;CharSet=utf8;";
 
         #endregion
@@ -46,11 +46,9 @@ namespace Goldenart_Mng
 
 
 
+          
 
-            
 
-
-            
 
 
 
@@ -277,6 +275,86 @@ namespace Goldenart_Mng
 
 
 
+        private void Progresss1(object sender, UploadProgressChangedEventArgs e)
+        {
+
+
+            // the progress
+            progressBar2.Value = e.ProgressPercentage;
+
+
+            if (progressBar2.Value == 100)
+            {
+                progressBar2.Value = 0;
+              
+                pictureBox1.Image = null;
+                img = null;
+                
+            }
+
+
+
+        }
+
+        private void Progresss2(object sender, UploadProgressChangedEventArgs e)
+        {
+
+
+            // the progress
+            progressBar3.Value = e.ProgressPercentage;
+
+            if (progressBar3.Value == 100)
+            {
+                progressBar3.Value = 0;
+
+                pictureBox2.Image = null;
+                img2 = null;
+
+            }
+
+
+        }
+
+        private void Progresss3(object sender, UploadProgressChangedEventArgs e)
+        {
+
+
+            // the progress
+            progressBar4.Value = e.ProgressPercentage;
+
+            if (progressBar4.Value == 100)
+            {
+                progressBar4.Value = 0;
+
+                pictureBox3.Image = null;
+                img3 = null;
+
+            }
+
+
+
+        }
+
+        private void Progresss4(object sender, UploadProgressChangedEventArgs e)
+        {
+
+
+            // the progress
+            progressBar5.Value = e.ProgressPercentage;
+
+            if (progressBar5.Value == 100)
+            {
+                progressBar5.Value = 0;
+
+                pictureBox4.Image = null;
+                img4 = null;
+
+            }
+
+
+
+        }
+
 
 
 
@@ -285,20 +363,23 @@ namespace Goldenart_Mng
 
         private void PictureBox1_Click(object sender, EventArgs e)
         {
+            progressBar2.Value = 0;
             label25.Visible = false;
             label23.Visible = false;
             OpenFileDialog opf = new OpenFileDialog();
-            opf.Filter = "choose image(*.jpg;*pmg;*.gif)|*.jpg;*pmg;*.gif";
+            opf.Filter = "choose image(*.jpg;*png;*.gif)|*.jpg;*png;*.gif";
             if (opf.ShowDialog() == DialogResult.OK)
             {
                 img = Image.FromFile(opf.FileName);
                  imgadd = opf.FileName;
+               
+            
+            
+            namepic1 = "_1";
+
+               
             }
-
-
-
             pictureBox1.Image = img;
-
         }
 
 
@@ -414,7 +495,7 @@ namespace Goldenart_Mng
 
             while (reader.Read())
             {
-
+                
                id =Convert.ToInt32( reader.GetString("id"));
 
 
@@ -434,7 +515,18 @@ namespace Goldenart_Mng
 
 
 
+        private void Progresss(object sender, UploadProgressChangedEventArgs e)
+        {
 
+
+            // the progress
+            progressBar1.Value = e.ProgressPercentage;
+
+
+            label12.Text = progressBar1.Value.ToString() + "%";
+
+
+        }
 
 
 
@@ -501,52 +593,6 @@ namespace Goldenart_Mng
 
                    
 
-                    if (pictureBox1.Image == null)
-                    {
-                        imgh = null;
-                    }
-                    else
-                    {
-                        MemoryStream ms = new MemoryStream();
-                        img.Save(ms, img.RawFormat);
-                        imgh = ms.ToArray();
-                    }
-                     if (pictureBox2.Image == null)
-                    {
-                        imgh2 = null;
-                    }
-                    else
-                    {
-                        
-
-                        MemoryStream ms2 = new MemoryStream();
-                        img2.Save(ms2, img2.RawFormat);
-                        imgh2 = ms2.ToArray();
-                    }
-                     if (pictureBox3.Image == null)
-                    {
-                        imgh3 = null;
-                    }
-                    else
-                    {
-                        
-
-                        MemoryStream ms3 = new MemoryStream();
-                        img3.Save(ms3, img3.RawFormat);
-                        imgh3 = ms3.ToArray();
-                    }
-                     if (pictureBox4.Image == null)
-                    {
-                        imgh4 = null;
-                    }
-                    else
-                    {
-                        
-
-                        MemoryStream ms4 = new MemoryStream();
-                        img4.Save(ms4, img4.RawFormat);
-                        imgh4 = ms4.ToArray();
-                    }
 
 
                     if (amount < (cost * rate))
@@ -565,14 +611,6 @@ namespace Goldenart_Mng
 
 
 
-                        WebClient client = new WebClient();
-                        client.Credentials = new NetworkCredential("Download-Archive-File", "Sai0naSai0na123");
-                        //string newadd = "http://192.168.1.100:8080/Download-Archive-File/";
-                        var uri = new System.Uri("http://192.168.1.100:8080/Download-Archive-File/", UriKind.Absolute);
-                      //  client.UploadProgressChanged += new UploadProgressChangedEventHandler(Progresss);
-                      //  client.UploadFileAsync(uri, textBox9.Text);
-                       // file_uploaded_name = Path.GetFileName(textBox9.Text);
-                     //   uploadlog = true;
 
 
 
@@ -590,13 +628,15 @@ namespace Goldenart_Mng
 
 
 
+                        
 
 
 
 
 
 
-                        String insertQuery = "insert into orderc(type,class,blocktext,clientid,des,date,lphoto,lphoto2,lphoto3,lphoto4,halghe,voice,photo,dhalghe,progress,file,Mac,User,errordes,status,pay,despay,Vip,Night) values(4,2,'',@clientid,@dess,@date,@img,@img2,@img3,@img4,@halghe,'','','','','','','','','','yes','موجودی',@vip,@night)";
+
+                        String insertQuery = "insert into orderc(type,class,blocktext,clientid,des,date,halghe,voice,photo,dhalghe,progress,file,Mac,User,errordes,status,pay,despay,Vip,Night) values(4,1,'',@clientid,@dess,@date,@halghe,'','','','','','','','','','yes','موجودی',@vip,@night)";
 
                         conn.Open();
 
@@ -605,11 +645,8 @@ namespace Goldenart_Mng
                           command.Parameters.Add("@clientid", MySqlDbType.Int16, 11);
                           command.Parameters.Add("@dess", MySqlDbType.VarChar, 128);
                            command.Parameters.Add("@date", MySqlDbType.DateTime);
-                           command.Parameters.Add("@img", MySqlDbType.MediumBlob);
-                           command.Parameters.Add("@img2", MySqlDbType.MediumBlob);
-                           command.Parameters.Add("@img3", MySqlDbType.MediumBlob);
-                           command.Parameters.Add("@img4", MySqlDbType.MediumBlob);
-                           command.Parameters.Add("@halghe", MySqlDbType.Int16, 11);
+
+                        command.Parameters.Add("@halghe", MySqlDbType.Int16, 11);
                     command.Parameters.Add("@dhalghe", MySqlDbType.VarChar, 128);
                     command.Parameters.Add("@vip", MySqlDbType.Int16, 11);
                     command.Parameters.Add("@night", MySqlDbType.Int16, 11);
@@ -617,18 +654,60 @@ namespace Goldenart_Mng
                     command.Parameters["@clientid"].Value = client_id2;
                     command.Parameters["@dess"].Value = richTextBox1.Text;
                     command.Parameters["@date"].Value = date;
-                        command.Parameters["@img"].Value = imgh;
-                        command.Parameters["@img2"].Value = imgh2;
-                        command.Parameters["@img3"].Value = imgh3;
-                        command.Parameters["@img4"].Value = imgh4;
-                        command.Parameters["@halghe"].Value = halghe;
+                       
+                    command.Parameters["@halghe"].Value = halghe;
                     command.Parameters["@dhalghe"].Value = textBox8.Text;
                     command.Parameters["@vip"].Value = vip;
                     command.Parameters["@night"].Value = night;
 
                     if (command.ExecuteNonQuery() == 1)
                     {
-                        label23.Visible = true;
+
+
+                            getlastid();
+
+
+
+                            if (pictureBox1.Image != null)
+                            {
+                                WebClient client = new WebClient();
+                                client.Credentials = new NetworkCredential("cp29196", "Saiona123");
+                                var uri = new System.Uri(@"ftp://144.76.189.82/public_html/Images/" + id + namepic1 + ".jpg", UriKind.Absolute);
+                                client.UploadProgressChanged += new UploadProgressChangedEventHandler(Progresss1);
+                                client.UploadFileAsync(uri, imgadd);
+                            }
+
+                            if (pictureBox2.Image != null)
+                            {
+                                WebClient client2 = new WebClient();
+                                client2.Credentials = new NetworkCredential("cp29196", "Saiona123");
+                                var uri2 = new System.Uri(@"ftp://144.76.189.82/public_html/Images/" + id + namepic2 + ".jpg", UriKind.Absolute);
+                                client2.UploadProgressChanged += new UploadProgressChangedEventHandler(Progresss2);
+                                client2.UploadFileAsync(uri2, imgadd2);
+                            }
+
+                            if (pictureBox3.Image != null)
+                            {
+                                WebClient client3 = new WebClient();
+                                client3.Credentials = new NetworkCredential("cp29196", "Saiona123");
+                                var uri3 = new System.Uri(@"ftp://144.76.189.82/public_html/Images/" + id + namepic3 + ".jpg", UriKind.Absolute);
+                                client3.UploadProgressChanged += new UploadProgressChangedEventHandler(Progresss3);
+                                client3.UploadFileAsync(uri3, imgadd3);
+                            }
+
+                            if (pictureBox4.Image != null)
+                            {
+                                WebClient client4 = new WebClient();
+                                client4.Credentials = new NetworkCredential("cp29196", "Saiona123");
+                                var uri4 = new System.Uri(@"ftp://144.76.189.82/public_html/Images/" + id + namepic4 + ".jpg", UriKind.Absolute);
+                                client4.UploadProgressChanged += new UploadProgressChangedEventHandler(Progresss4);
+                                client4.UploadFileAsync(uri4, imgadd4);
+                            }
+
+
+                            label23.Visible = true;
+
+
 
                     }
 
@@ -637,7 +716,70 @@ namespace Goldenart_Mng
 
 
 
-                    string query = "UPDATE  bot SET amont='" + (amount - ((cost*rate)+smscost)) + "' WHERE chatid='" + client_id2 + "'";
+                        if (pictureBox1.Image == null)
+                        {
+                            names1 = null;
+                        }
+                        else
+                        {
+                            names1 = (id + namepic1 + ".jpg");
+                        }
+
+                        if (pictureBox2.Image == null)
+                        {
+                            names2 = null;
+                        }
+                        else
+                        {
+                            names2 = (id + namepic2 + ".jpg");
+                        }
+
+                        if (pictureBox3.Image == null)
+                        {
+                            names3 = null;
+                        }
+                        else
+                        {
+                            names3 = (id + namepic3 + ".jpg");
+                        }
+
+                        if (pictureBox4.Image == null)
+                        {
+                            names4 = null;
+                        }
+                        else
+                        {
+                            names4 = (id + namepic4 + ".jpg");
+                        }
+
+
+
+
+
+
+
+                        string query2 = "UPDATE  orderc SET lphoto='" + names1 + "',lphoto2='" + names2 + "',lphoto3='" + names3 + "',lphoto4='" + names4 + "'  WHERE id='" + id + "'";
+
+                        //This is  MySqlConnection here i have created the object and pass my connection string.  
+                        MySqlConnection MyConn3 = new MySqlConnection(strconn);
+                        //This is command class which will handle the query and connection object.  
+                        MySqlCommand MyCommand3 = new MySqlCommand(query2, MyConn3);
+                        MySqlDataReader MyReader3;
+                        MyConn3.Open();
+                        MyReader3 = MyCommand3.ExecuteReader();     // Here our query will be executed and data saved into the database.  
+
+                        while (MyReader3.Read())
+                        {
+                        }
+                        MyConn3.Close();
+
+
+
+
+
+
+
+                        string query = "UPDATE  bot SET amont='" + (amount - ((cost*rate)+smscost)) + "' WHERE chatid='" + client_id2 + "'";
 
                     //This is  MySqlConnection here i have created the object and pass my connection string.  
                     MySqlConnection MyConn2 = new MySqlConnection(strconn);
@@ -655,12 +797,12 @@ namespace Goldenart_Mng
                         if (smsla == "1")
                         {
 
-                            getlastid();
+                           
                             smssend(mobla, id.ToString(), "order");
                         }
 
 
-                        radioButton1.Checked = false;
+                        radioButton1.Checked = true;
                         radioButton2.Checked = false;
                         radioButton3.Checked = false;
                         radioButton4.Checked = false;
@@ -669,14 +811,8 @@ namespace Goldenart_Mng
                         radioButton7.Checked = false;
                         textBox8.Text = "";
                         richTextBox1.Text = "";
-                        pictureBox1.Image = null;
-                        pictureBox2.Image = null;
-                        pictureBox3.Image = null;
-                        pictureBox4.Image = null;
-                        img = null;
-                        img2 = null;
-                        img3 = null;
-                        img4 = null;
+                        
+                        
                     }
 
                     
@@ -747,12 +883,12 @@ namespace Goldenart_Mng
                          if (smsla == "1")
                         {
 
-                            getlastid();
+                           
                             smssend(mobla, id.ToString(), "order");
                         }
 
 
-                        radioButton1.Checked = false;
+                        radioButton1.Checked = true;
                         radioButton2.Checked = false;
                         radioButton3.Checked = false;
                         radioButton4.Checked = false;
@@ -776,10 +912,11 @@ namespace Goldenart_Mng
                 refresh();
 
 
-               
 
-                
+                 
+
             }
+
         }
 
 
@@ -788,10 +925,10 @@ namespace Goldenart_Mng
         {
 
 
-            
 
 
-
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
 
             string sql = "SELECT * FROM orderc where clientid='" + clientidla + "' and send='yes' Order By date DESC LIMIT 15";
             MySqlConnection conn = new MySqlConnection(strconn);
@@ -967,6 +1104,12 @@ namespace Goldenart_Mng
             h.ShowDialog();
         }
 
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            
+
+        }
+
         private void ListBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             label33.Visible = false;
@@ -1000,6 +1143,7 @@ namespace Goldenart_Mng
             errorform er = new errorform( listBox1.SelectedItem.ToString());
             er.ShowDialog();
             getorder();
+            geterrororder();
 
             button2.Enabled = false;
             error_but.Enabled = false;
@@ -1027,8 +1171,8 @@ namespace Goldenart_Mng
             if (radioButton1.Checked)
             {
                 halghe = "1";
-                label25.Visible = false;
-                label23.Visible = false;
+                
+                
             }
         }
 
@@ -1091,17 +1235,23 @@ namespace Goldenart_Mng
 
         private void PictureBox3_Click(object sender, EventArgs e)
         {
+            progressBar4.Value = 0;
             label25.Visible = false;
             label23.Visible = false;
             OpenFileDialog opf = new OpenFileDialog();
-            opf.Filter = "choose image(*.jpg;*pmg;*.gif)|*.jpg;*pmg;*.gif";
+            opf.Filter = "choose image(*.jpg;*png;*.gif)|*.jpg;*png;*.gif";
             if (opf.ShowDialog() == DialogResult.OK)
             {
                 img3 = Image.FromFile(opf.FileName);
+                imgadd3 = opf.FileName;
+
+
+                
+                namepic3 = "_3";
+
+
+                
             }
-
-
-
             pictureBox3.Image = img3;
         }
 
@@ -1114,6 +1264,11 @@ namespace Goldenart_Mng
             if (opf.ShowDialog() == DialogResult.OK)
             {
                 img4 = Image.FromFile(opf.FileName);
+                imgadd4 = opf.FileName;
+
+
+
+                namepic4 = "_4";
             }
 
 
@@ -1172,17 +1327,27 @@ namespace Goldenart_Mng
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
+ 
+
+
+
+            progressBar3.Value = 0;
             label25.Visible = false;
             label23.Visible = false;
             OpenFileDialog opf = new OpenFileDialog();
-            opf.Filter = "choose image(*.jpg;*pmg;*.gif)|*.jpg;*pmg;*.gif";
+            opf.Filter = "choose image(*.jpg;*png;*.gif)|*.jpg;*png;*.gif";
             if (opf.ShowDialog() == DialogResult.OK)
             {
                 img2 = Image.FromFile(opf.FileName);
+                imgadd2 = opf.FileName;
+
+
+                
+                namepic2 = "_2";
+
+
+                
             }
-
-
-
             pictureBox2.Image = img2;
         }
 
@@ -1256,7 +1421,7 @@ namespace Goldenart_Mng
             refresh();
             label25.Visible = false;
             label23.Visible = false;
-            radioButton1.Checked = false;
+            radioButton1.Checked = true;
             radioButton2.Checked = false;
             radioButton3.Checked = false;
             radioButton4.Checked = false;
@@ -1269,6 +1434,10 @@ namespace Goldenart_Mng
             pictureBox2.Image = null;
             pictureBox3.Image = null;
             pictureBox4.Image = null;
+            progressBar1.Value = 0;
+            progressBar2.Value = 0;
+            progressBar3.Value = 0;
+            progressBar4.Value = 0;
             img = null;
             img2 = null;
             img3 = null;
@@ -1299,6 +1468,8 @@ namespace Goldenart_Mng
         {
             refresh();
            
+
+
 
         }
 

@@ -62,6 +62,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.progressBar3 = new System.Windows.Forms.ProgressBar();
+            this.progressBar4 = new System.Windows.Forms.ProgressBar();
+            this.progressBar5 = new System.Windows.Forms.ProgressBar();
             this.label22 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
@@ -85,6 +89,11 @@
             this.simp_la = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -107,11 +116,6 @@
             this.label25 = new System.Windows.Forms.Label();
             this.symbolBox3 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.symbolBox4 = new DevComponents.DotNetBar.Controls.SymbolBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -140,6 +144,10 @@
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.progressBar2);
+            this.groupBox2.Controls.Add(this.progressBar3);
+            this.groupBox2.Controls.Add(this.progressBar4);
+            this.groupBox2.Controls.Add(this.progressBar5);
             this.groupBox2.Location = new System.Drawing.Point(372, 63);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -511,6 +519,34 @@
             this.textBox8.TabIndex = 1;
             this.textBox8.TextChanged += new System.EventHandler(this.TextBox8_TextChanged);
             // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(225, 25);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(76, 23);
+            this.progressBar2.TabIndex = 53;
+            // 
+            // progressBar3
+            // 
+            this.progressBar3.Location = new System.Drawing.Point(304, 25);
+            this.progressBar3.Name = "progressBar3";
+            this.progressBar3.Size = new System.Drawing.Size(81, 23);
+            this.progressBar3.TabIndex = 54;
+            // 
+            // progressBar4
+            // 
+            this.progressBar4.Location = new System.Drawing.Point(225, 159);
+            this.progressBar4.Name = "progressBar4";
+            this.progressBar4.Size = new System.Drawing.Size(76, 23);
+            this.progressBar4.TabIndex = 55;
+            // 
+            // progressBar5
+            // 
+            this.progressBar5.Location = new System.Drawing.Point(304, 159);
+            this.progressBar5.Name = "progressBar5";
+            this.progressBar5.Size = new System.Drawing.Size(81, 23);
+            this.progressBar5.TabIndex = 56;
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -762,6 +798,56 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اطلاعات سفارشات دریافتی";
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(291, 26);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(57, 13);
+            this.label32.TabIndex = 53;
+            this.label32.Text = "سفارشات :";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(266, 157);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(85, 13);
+            this.label31.TabIndex = 52;
+            this.label31.Text = "سفارشات ناقص :";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(276, 243);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(75, 13);
+            this.label30.TabIndex = 51;
+            this.label30.Text = "توضیحات نقص:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.MistyRose;
+            this.textBox4.HideSelection = false;
+            this.textBox4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.textBox4.Location = new System.Drawing.Point(166, 262);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox4.Size = new System.Drawing.Size(182, 36);
+            this.textBox4.TabIndex = 50;
+            // 
+            // listBox2
+            // 
+            this.listBox2.BackColor = System.Drawing.Color.MistyRose;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(166, 175);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(182, 56);
+            this.listBox2.TabIndex = 49;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.ListBox2_SelectedIndexChanged);
+            // 
             // listBox1
             // 
             this.listBox1.BackColor = System.Drawing.Color.Honeydew;
@@ -999,56 +1085,6 @@
             this.symbolBox4.Text = "symbolBox4";
             this.symbolBox4.Click += new System.EventHandler(this.SymbolBox4_Click);
             // 
-            // listBox2
-            // 
-            this.listBox2.BackColor = System.Drawing.Color.MistyRose;
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(166, 175);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(182, 56);
-            this.listBox2.TabIndex = 49;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.ListBox2_SelectedIndexChanged);
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.MistyRose;
-            this.textBox4.HideSelection = false;
-            this.textBox4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textBox4.Location = new System.Drawing.Point(166, 262);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox4.Size = new System.Drawing.Size(182, 36);
-            this.textBox4.TabIndex = 50;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(276, 243);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(75, 13);
-            this.label30.TabIndex = 51;
-            this.label30.Text = "توضیحات نقص:";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(266, 157);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(85, 13);
-            this.label31.TabIndex = 52;
-            this.label31.Text = "سفارشات ناقص :";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(291, 26);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(57, 13);
-            this.label32.TabIndex = 53;
-            this.label32.Text = "سفارشات :";
-            // 
             // label33
             // 
             this.label33.AutoSize = true;
@@ -1211,6 +1247,10 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.ProgressBar progressBar3;
+        private System.Windows.Forms.ProgressBar progressBar4;
+        private System.Windows.Forms.ProgressBar progressBar5;
     }
 }
 
