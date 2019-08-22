@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Goldenart_Mng</RootNamespace>
-    <AssemblyName>Goldenart Mng</AssemblyName>
+    <AssemblyName>Goldenart Order</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -44,6 +44,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -53,9 +54,10 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>golden_design_mng_P98_icon.ico</ApplicationIcon>
+    <ApplicationIcon>golden design mng%281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -169,11 +171,15 @@
     <None Include="Resources\not.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="golden design mng%281%29.ico" />
     <Content Include="golden_design_mng_P98_icon.ico" />
     <None Include="Resources\photo_2019-08-04_08-44-16.jpg" />
     <None Include="Resources\photo_2019-08-04_08-34-04.jpg" />
     <None Include="Resources\login-icon-3047.png" />
     <None Include="Resources\111.png" />
+    <None Include="Resources\555.png" />
+    <None Include="Resources\3333333.png" />
+    <None Include="Resources\golden design mng.png" />
     <Content Include="Resources\golden_design_mng_P98_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

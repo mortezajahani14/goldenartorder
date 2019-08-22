@@ -81,7 +81,12 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "errorform";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "ارسال خطا";
             this.ResumeLayout(false);
             this.PerformLayout();

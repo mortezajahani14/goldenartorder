@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Collections.Specialized;
 using MySql.Data.MySqlClient;
+using System.Linq;
 
 namespace Goldenart_Mng
 {
@@ -33,7 +34,7 @@ namespace Goldenart_Mng
         double rate, ratesimp;
         int pardakht = 0, amount = 0, cost = 0, sympcost = 0, smscost = 0, id = 0;
         string  namela, lnamela, mobla, amountla, accla, nightla,errorla, smsla, names1 = "", names2 = "", names3 = "", names4 = "", namepic1 = "", namepic2 = "", namepic3 = "", namepic4 = "", simpla, datela, clientidla,vip,night,pardakhtsh , desssh,halghesh,tozihhalghesh,filedl,datesh,halghe;
-        string strconn = "Server=144.76.189.82;Port=3306;Database=cp29196_Golddesign;UID=cp29196_ugolddesign;PASSWORD=sd0018658962;Convert Zero Datetime=true;Allow Zero Datetime=True;SslMode=None;CharSet=utf8;";
+        string strconn = "Server=golden-art.ir;Port=3306;Database=saiona_DB;UID=saiona_DB;PASSWORD=SAIONA!#@golden_art88348453;Convert Zero Datetime=true;Allow Zero Datetime=True;SslMode=None;CharSet=utf8;";
 
         #endregion
 
@@ -41,16 +42,44 @@ namespace Goldenart_Mng
 
 
 
-        public void refresh()
+
+
+
+
+
+        public void getid()
         {
 
+            string sql9 = " SELECT *  FROM orderc WHERE clientid='" + client_id2 + "' ORDER BY id DESC LIMIT 1";
 
 
-          
+            MySqlConnection conn9 = new MySqlConnection(strconn);
+            MySqlCommand cmd9 = new MySqlCommand(sql9, conn9);
+
+            conn9.Open();
+
+            MySqlDataReader reader9 = cmd9.ExecuteReader();
+
+            while (reader9.Read())
+            {
+
+
+
+                MessageBox.Show(" شماره سفارش شما برابر :  " + reader9.GetString("id"), "سفارش", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
 
 
+
+
+            }
+            conn9.Close();
+
+        }
+
+
+        public void refresh()
+        {
 
 
 
@@ -134,6 +163,47 @@ namespace Goldenart_Mng
 
 
 
+            string sql5 = "SELECT * FROM orderc where clientid='" + clientidla + "' and send='no' and pay='yes' and block='1' and blocksee='0' Order By date DESC LIMIT 4";
+            MySqlConnection conn5 = new MySqlConnection(strconn);
+            MySqlCommand cmd5 = new MySqlCommand(sql5, conn5);
+
+            conn5.Open();
+
+            MySqlDataReader reader5 = cmd5.ExecuteReader();
+
+            while (reader5.Read())
+            {
+
+
+              
+                MessageBox.Show("سفارش شماره '" + reader5.GetString("id") + "' به توضیح '" + reader5.GetString("des") + "' به دلیل '" + reader5.GetString("blocktext") + "' حذف شده است . لطفا دوباره با توجه به توضیحات ارسال کنید.", "فایل ناقص", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading, false);
+
+                string query = "UPDATE  orderc SET blocksee='1' WHERE id='" + reader5.GetString("id") + "'";
+
+                //This is  MySqlConnection here i have created the object and pass my connection string.  
+                MySqlConnection MyConn2 = new MySqlConnection(strconn);
+                //This is command class which will handle the query and connection object.  
+                MySqlCommand MyCommand2 = new MySqlCommand(query, MyConn2);
+                MySqlDataReader MyReader2;
+                MyConn2.Open();
+                MyReader2 = MyCommand2.ExecuteReader();     // Here our query will be executed and data saved into the database.  
+
+                while (MyReader2.Read())
+                {
+                }
+                MyConn2.Close();
+
+
+
+
+            }
+            conn5.Close();
+
+
+
+
+
+
             name_la.Text = namela;
             lname_la.Text = lnamela;
             mob_la.Text = mobla;
@@ -173,10 +243,12 @@ namespace Goldenart_Mng
             if (simpla == "0")
             {
                 simp_la.Text = "غیر فعال";
+                radioButton8.Enabled = false;
             }
             else
             {
                 simp_la.Text = "فعال";
+                radioButton8.Enabled = true;
             }
 
             DateTime d = DateTime.Parse(datela);
@@ -187,37 +259,37 @@ namespace Goldenart_Mng
             clientid_la.Text = clientidla;
 
 
-         //  var dateNow = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Iran Standard Time"));
-         //
-         //
-         //
-         //
-         //  var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
-         //                 dateNow.Hour, dateNow.Minute, dateNow.Second);
-         //
-         //
-         //
-         //
-         //
-         //
-         //
-         //
-         //  string query = "UPDATE  bot SET date='" + date + "' WHERE chatid='" + client_id2 + "'";
-         //
-         //  //This is  MySqlConnection here i have created the object and pass my connection string.  
-         //  MySqlConnection MyConn2 = new MySqlConnection(strconn);
-         //  //This is command class which will handle the query and connection object.  
-         //  MySqlCommand MyCommand2 = new MySqlCommand(query, MyConn2);
-         //  MySqlDataReader MyReader2;
-         //  MyConn2.Open();
-         //  MyReader2 = MyCommand2.ExecuteReader();     // Here our query will be executed and data saved into the database.  
-         //
-         //  while (MyReader2.Read())
-         //  {
-         //  }
-         //  MyConn2.Close();
-         //
-         //
+           var dateNow = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Iran Standard Time"));
+         
+         
+         
+         
+           var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
+                          dateNow.Hour, dateNow.Minute, dateNow.Second);
+         
+         
+         
+         
+         
+         
+         
+         
+       //  string query7 = "UPDATE  bot SET date='@date' WHERE chatid='" + client_id2 + "'";
+       //
+       //  //This is  MySqlConnection here i have created the object and pass my connection string.  
+       //  MySqlConnection MyConn7 = new MySqlConnection(strconn);
+       //  //This is command class which will handle the query and connection object.  
+       //  MySqlCommand MyCommand7 = new MySqlCommand(query7, MyConn7);
+       //  MySqlDataReader MyReader7;
+       //  MyConn7.Open();
+       //  MyReader7 = MyCommand7.ExecuteReader();     // Here our query will be executed and data saved into the database.  
+       //
+       //  while (MyReader7.Read())
+       //  {
+       //  }
+       //  MyConn7.Close();
+       //
+         
 
 
         }
@@ -289,6 +361,8 @@ namespace Goldenart_Mng
               
                 pictureBox1.Image = null;
                 img = null;
+
+                this.Enabled = true;
                 
             }
 
@@ -310,6 +384,8 @@ namespace Goldenart_Mng
                 pictureBox2.Image = null;
                 img2 = null;
 
+                this.Enabled = true;
+
             }
 
 
@@ -329,6 +405,8 @@ namespace Goldenart_Mng
                 pictureBox3.Image = null;
                 img3 = null;
 
+
+                this.Enabled = true;
             }
 
 
@@ -349,6 +427,8 @@ namespace Goldenart_Mng
                 pictureBox4.Image = null;
                 img4 = null;
 
+
+                this.Enabled = true;
             }
 
 
@@ -386,15 +466,16 @@ namespace Goldenart_Mng
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                Hide();
-                notifyIcon1.Visible = true;
-            }
+           
         }
 
         private void ListBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+
+
+
+
+
             label33.Visible = false;
             progressBar1.Value = 0;
             button2.Enabled = true;
@@ -426,7 +507,7 @@ namespace Goldenart_Mng
                 errorla = reader.GetString("error");
 
 
-                switch (reader.GetString("halghe"))
+                switch (reader["halghe"] as string)
                 {
                     case "1":
                         textBox2.Text = "حلقه شماره 1";
@@ -450,6 +531,10 @@ namespace Goldenart_Mng
                         textBox2.Text = "حلقه چه خاص";
                         break;
                 }
+
+
+
+                textBox5.Text = (filedl.Split('/').Last());
 
 
             }
@@ -532,7 +617,12 @@ namespace Goldenart_Mng
 
         private void Button4_Click_1(object sender, EventArgs e)
         {
-
+            this.Enabled = false;
+            
+            progressBar2.Enabled = true;
+            progressBar3.Enabled = true;
+            progressBar4.Enabled = true;
+            progressBar5.Enabled = true;
             if (bank_ra.Checked)
             {
                 MessageBox.Show("در این نسخه امکان پرداخت بانکی وجود ندارد");
@@ -671,8 +761,8 @@ namespace Goldenart_Mng
                             if (pictureBox1.Image != null)
                             {
                                 WebClient client = new WebClient();
-                                client.Credentials = new NetworkCredential("cp29196", "Saiona123");
-                                var uri = new System.Uri(@"ftp://144.76.189.82/public_html/Images/" + id + namepic1 + ".jpg", UriKind.Absolute);
+                                client.Credentials = new NetworkCredential("saiona", "saiona123");
+                                var uri = new System.Uri(@"ftp://golden-art.ir/public_html/Images/" + id + namepic1 + ".jpg", UriKind.Absolute);
                                 client.UploadProgressChanged += new UploadProgressChangedEventHandler(Progresss1);
                                 client.UploadFileAsync(uri, imgadd);
                             }
@@ -680,36 +770,55 @@ namespace Goldenart_Mng
                             if (pictureBox2.Image != null)
                             {
                                 WebClient client2 = new WebClient();
-                                client2.Credentials = new NetworkCredential("cp29196", "Saiona123");
-                                var uri2 = new System.Uri(@"ftp://144.76.189.82/public_html/Images/" + id + namepic2 + ".jpg", UriKind.Absolute);
+                                client2.Credentials = new NetworkCredential("saiona", "saiona123");
+                                var uri2 = new System.Uri(@"ftp://golden-art.ir/public_html/Images/" + id + namepic2 + ".jpg", UriKind.Absolute);
                                 client2.UploadProgressChanged += new UploadProgressChangedEventHandler(Progresss2);
                                 client2.UploadFileAsync(uri2, imgadd2);
                             }
 
+                           
+
+
                             if (pictureBox3.Image != null)
                             {
                                 WebClient client3 = new WebClient();
-                                client3.Credentials = new NetworkCredential("cp29196", "Saiona123");
-                                var uri3 = new System.Uri(@"ftp://144.76.189.82/public_html/Images/" + id + namepic3 + ".jpg", UriKind.Absolute);
+                                client3.Credentials = new NetworkCredential("saiona", "saiona123");
+                                var uri3 = new System.Uri(@"ftp://golden-art.ir/public_html/Images/" + id + namepic3 + ".jpg", UriKind.Absolute);
                                 client3.UploadProgressChanged += new UploadProgressChangedEventHandler(Progresss3);
                                 client3.UploadFileAsync(uri3, imgadd3);
                             }
 
+
                             if (pictureBox4.Image != null)
                             {
                                 WebClient client4 = new WebClient();
-                                client4.Credentials = new NetworkCredential("cp29196", "Saiona123");
-                                var uri4 = new System.Uri(@"ftp://144.76.189.82/public_html/Images/" + id + namepic4 + ".jpg", UriKind.Absolute);
+                                client4.Credentials = new NetworkCredential("saiona", "saiona123");
+                                var uri4 = new System.Uri(@"ftp://golden-art.ir/public_html/Images/" + id + namepic4 + ".jpg", UriKind.Absolute);
                                 client4.UploadProgressChanged += new UploadProgressChangedEventHandler(Progresss4);
                                 client4.UploadFileAsync(uri4, imgadd4);
                             }
 
+      
 
                             label23.Visible = true;
 
 
 
-                    }
+
+
+
+
+
+
+
+                           
+
+
+
+
+
+
+                        }
 
                     conn.Close();
 
@@ -907,7 +1016,7 @@ namespace Goldenart_Mng
                         img4 = null;
                     }
                 }
-
+                getid();
 
                 refresh();
 
@@ -916,6 +1025,11 @@ namespace Goldenart_Mng
                  
 
             }
+            if (pictureBox1.Image == null && pictureBox2.Image == null && pictureBox3.Image == null && pictureBox4.Image == null  )
+            {
+                this.Enabled = true;
+            }
+            
 
         }
 
@@ -943,8 +1057,8 @@ namespace Goldenart_Mng
 
                 listBox1.Items.Add(reader.GetString("id"));
 
-
-
+                
+                
 
 
 
@@ -998,7 +1112,7 @@ namespace Goldenart_Mng
 
 
 
-
+        
         private void Button1_Click_1(object sender, EventArgs e)
         {
             label33.Visible = false;
@@ -1013,12 +1127,13 @@ namespace Goldenart_Mng
 
         private void Button5_Click_2(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
             label33.Visible = false;
             progressBar1.Value = 0;
             button2.Enabled = false;
             error_but.Enabled = false;
-            listBox1.Items.Clear();
-            listBox2.Items.Clear();
+            
             label20.Text = "";
 
 
@@ -1027,8 +1142,38 @@ namespace Goldenart_Mng
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
-
+            textBox5.Text = "";
             label22.Text = "";
+
+            refresh();
+        }
+
+        private void Button6_Click_1(object sender, EventArgs e)
+        {
+
+
+
+
+        }
+
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void RadioButton6_CheckedChanged(object sender, EventArgs e)
@@ -1114,8 +1259,7 @@ namespace Goldenart_Mng
         {
             label33.Visible = false;
             progressBar1.Value = 0;
-            button2.Enabled = true;
-            error_but.Enabled = true;
+            
 
             string sql = " SELECT *  FROM orderc WHERE id='" + listBox2.SelectedItem + "' ";
 
@@ -1152,11 +1296,12 @@ namespace Goldenart_Mng
             label20.Text = "";
 
 
-
+           
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
-
+            textBox4.Text = "";
+            textBox5.Text = "";
             label22.Text = "";
         }
 
@@ -1186,7 +1331,10 @@ namespace Goldenart_Mng
             progressBar1.Value = e.ProgressPercentage;
 
 
-            
+            if (e.ProgressPercentage == 100)
+            {
+                label33.Visible = true;
+            }
 
 
         }
@@ -1202,8 +1350,8 @@ namespace Goldenart_Mng
             WebClient Client = new WebClient();
             var uri = new System.Uri(filedl, UriKind.Absolute);
             Client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(Progresss);
-            Client.DownloadFileAsync(uri, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +@"\"+ listBox1.SelectedItem + ".zip" );
-            label33.Visible = true;
+            Client.DownloadFileAsync(uri, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +@"\"+ listBox1.SelectedItem +"."+ (filedl.Split('.').Last()));
+            
         }
 
         private void Label12_Click(object sender, EventArgs e)
@@ -1464,11 +1612,49 @@ namespace Goldenart_Mng
 
         }
 
+        
         private void Form1_Load(object sender, EventArgs e)
         {
-            refresh();
-           
+            
 
+
+
+            var dateNow2 = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Iran Standard Time"));
+
+
+
+
+            var date = new DateTime(dateNow2.Year, dateNow2.Month, dateNow2.Day,
+                       dateNow2.Hour, dateNow2.Minute, dateNow2.Second);
+
+
+
+
+
+
+            MySqlConnection conn = new MySqlConnection(strconn);
+            MySqlCommand command;
+
+
+
+            String insertQuery = "UPDATE  bot SET date=@date WHERE chatid='" + client_id2 + "'";
+
+            conn.Open();
+
+            command = new MySqlCommand(insertQuery, conn);
+
+
+            command.Parameters.Add("@date", MySqlDbType.DateTime).Value = date;
+
+
+            
+
+
+
+            command.ExecuteNonQuery();
+
+            conn.Close();
+            refresh();
 
 
         }

@@ -20,7 +20,7 @@ namespace Goldenart_Mng
             item = selectedItem;
         }
 
-        string strconn = "Server=144.76.189.82;Port=3306;Database=cp29196_Golddesign;UID=cp29196_ugolddesign;PASSWORD=sd0018658962;Convert Zero Datetime=true;Allow Zero Datetime=True;SslMode=None;CharSet=utf8;";
+        string strconn = "Server=golden-art.ir;Port=3306;Database=saiona_DB;UID=saiona_DB;PASSWORD=SAIONA!#@golden_art88348453;Convert Zero Datetime=true;Allow Zero Datetime=True;SslMode=None;CharSet=utf8;";
 
 
         private void Button2_Click(object sender, EventArgs e)

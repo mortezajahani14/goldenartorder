@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -68,7 +67,6 @@
             this.progressBar5 = new System.Windows.Forms.ProgressBar();
             this.label22 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -89,6 +87,7 @@
             this.simp_la = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -113,10 +112,10 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.date_la = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.symbolBox3 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.symbolBox4 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label33 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -565,13 +564,6 @@
             this.label20.Size = new System.Drawing.Size(0, 13);
             this.label20.TabIndex = 28;
             // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "تنها نرم افزار طراحی هوشمند در ایران";
-            this.notifyIcon1.Visible = true;
-            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon1_MouseDoubleClick);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -772,6 +764,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.label32);
             this.groupBox1.Controls.Add(this.label31);
             this.groupBox1.Controls.Add(this.label30);
@@ -797,6 +790,15 @@
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اطلاعات سفارشات دریافتی";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.textBox5.Location = new System.Drawing.Point(166, 130);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(182, 20);
+            this.textBox5.TabIndex = 54;
             // 
             // label32
             // 
@@ -837,6 +839,7 @@
             this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox4.Size = new System.Drawing.Size(182, 36);
             this.textBox4.TabIndex = 50;
+            this.textBox4.TextChanged += new System.EventHandler(this.TextBox4_TextChanged);
             // 
             // listBox2
             // 
@@ -854,7 +857,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(166, 42);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(182, 108);
+            this.listBox1.Size = new System.Drawing.Size(182, 82);
             this.listBox1.TabIndex = 23;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged_1);
             // 
@@ -866,7 +869,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox3.Size = new System.Drawing.Size(153, 58);
+            this.textBox3.Size = new System.Drawing.Size(153, 55);
             this.textBox3.TabIndex = 14;
             // 
             // label21
@@ -1039,18 +1042,6 @@
             this.date_la.TabIndex = 35;
             this.date_la.Text = "1";
             // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.Color.Firebrick;
-            this.label25.Location = new System.Drawing.Point(592, 388);
-            this.label25.Name = "label25";
-            this.label25.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label25.Size = new System.Drawing.Size(162, 13);
-            this.label25.TabIndex = 46;
-            this.label25.Text = "ارسال نمونه برای شما فعال نیست";
-            this.label25.Visible = false;
-            // 
             // symbolBox3
             // 
             // 
@@ -1097,6 +1088,18 @@
             this.label33.Text = "دانلود با موفقیت انجام شد";
             this.label33.Visible = false;
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.Firebrick;
+            this.label25.Location = new System.Drawing.Point(592, 388);
+            this.label25.Name = "label25";
+            this.label25.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label25.Size = new System.Drawing.Size(162, 13);
+            this.label25.TabIndex = 46;
+            this.label25.Text = "ارسال نمونه برای شما فعال نیست";
+            this.label25.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1139,8 +1142,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.ShowInTaskbar = false;
             this.Text = "سیستم هوشمند سفارشات هنر طلایی";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.Resize += new System.EventHandler(this.Form1_Resize);
@@ -1171,7 +1175,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -1229,7 +1232,6 @@
         private System.Windows.Forms.RadioButton radioButton8;
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.GroupBox groupBox5;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox3;
         private System.Windows.Forms.ProgressBar progressBar1;
@@ -1251,6 +1253,8 @@
         private System.Windows.Forms.ProgressBar progressBar3;
         private System.Windows.Forms.ProgressBar progressBar4;
         private System.Windows.Forms.ProgressBar progressBar5;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBox5;
     }
 }
 
